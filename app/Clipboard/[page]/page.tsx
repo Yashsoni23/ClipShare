@@ -12,7 +12,7 @@ import CopyToClipboard from "react-copy-to-clipboard";
 
 export default function Clipboard() {
   const [url, setURL] = useState("");
-  const socket = io();
+  const socket = io("https://livechat23.adaptable.app");
   const path = usePathname();
   const [baseUrl, setBaseUrl] = useState("");
   const [copied, setCopied] = useState(false);

@@ -11,7 +11,8 @@ import "react-toastify/dist/ReactToastify.css";
 import CopyToClipboard from "react-copy-to-clipboard";
 
 export default function Clipboard() {
-  const socket = io("http://172.20.10.3:3000/");
+  const [url, setURL] = useState("");
+  const socket = io(url);
   const path = usePathname();
   const [baseUrl, setBaseUrl] = useState("");
   const [copied, setCopied] = useState(false);
@@ -29,6 +30,7 @@ export default function Clipboard() {
 
   useEffect(() => {
     setBaseUrl(`${window.location.protocol}//${window.location.host}` + path);
+    setURL(`${window.location.protocol}//${window.location.host}`);
     setIsMobile(window.innerWidth < 500 ? true : false);
   }, []);
 

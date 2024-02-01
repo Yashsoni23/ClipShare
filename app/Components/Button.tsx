@@ -9,7 +9,7 @@ export default function Button({
 }) {
   return (
     <button
-      className="text-white w-full p-[.2rem]  sm:p-[1vw] rounded-[.5vw] max-sm:text-md max-sm:rounded-md sm:text-[1.3vw] duration-300 transition-all hover:bg-[#2759CE]/80  bg-[#2759CE]"
+      className="text-white w-full relative z-40 p-[.2rem]  sm:p-[1vw] rounded-[.5vw] max-sm:text-md max-sm:rounded-md sm:text-[1.3vw] duration-300 transition-all hover:bg-[#2759CE]/80  bg-[#2759CE]"
       type="button"
       onClick={() => onClick && onClick()}
     >

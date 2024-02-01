@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Image from "next/image";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,10 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="w-screen h-screen relative">
-          <h1 className="absolute top-0 w-full text-center p-[.5vw] font-semibold bg-white shadow-md max-sm:text-xl sm:text-[2vw] text-slate-700">
-            Clip Share
-          </h1>
+        <div className="w-screen  h-screen relative flex flex-col justify-center items-center">
+          <div className="flex shadow-md relative w-full h-[5vw]">
+            <Image src={"/logo85.png"} alt="logo" fill objectFit="contain" />
+          </div>
           <div className="bg-cyan-50  w-full h-[100%] flex justify-center items-center flex-col gap-[1vw]">
             {children}
           </div>

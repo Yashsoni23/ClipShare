@@ -45,9 +45,7 @@ export default function Clipboard() {
 
   const handleCopy = ({ text }: any) => {
     setCopied(true); // Set copied state to true when text is copied
-    if (text) {
-      toast("😉: Link Copied !!");
-    } else toast("😉: Text Copied !!");
+    toast("😉: Text Copied !!");
     setTimeout(() => {
       setCopied(false); // Reset copied state after 2 seconds
     }, 2000);
@@ -55,24 +53,38 @@ export default function Clipboard() {
 
   return (
     <div className="flex sm:gap-[2vw] max-sm:gap-[2rem]  sm:justify-center sm:items-center  max-sm:flex-col">
-      <div className="flex flex-col sm:gap-[2vw] max-sm:gap-[1rem]">
-        <QRCode size={isMobile ? 280 : 400} value={baseUrl + path} />
-        <h1>Scan QR code for open clipboard on your mobile</h1>
-        <CopyToClipboard text={baseUrl} onCopy={(text) => handleCopy(text)}>
-          <Button title="Share Link via Whatsapp" />
-        </CopyToClipboard>
+      <div className="flex flex-col sm:gap-[2vw] max-sm:gap-[1rem] justify-center items-center">
+        <QRCode size={isMobile ? 280 : 400} value={baseUrl} />
+        <h1 className="max-sm:hidden text-center p-[.5vw] font-semibold max-sm:text-xl sm:text-[1.2vw] text-slate-700">
+          Scan QR code for open clipboard on your mobile
+        </h1>
+        <Button
+          onClick={() =>
+            window.open(
+              `https://api.whatsapp.com/send?&text=Open%20this%20link%20to%20your%20browser:%20${baseUrl}`
+            )
+          }
+          hoverColor="hover:bg-green-500/50"
+          color="bg-green-500"
+          title="Share Link via Whatsapp"
+        />
       </div>
 
       <ToastContainer stacked />
       <div className="flex  flex-col justify-center items-center gap-4">
         <textarea
-          className="outline-none max-sm:rounded-2xl sm:w-[60vw] max-sm:h-[30vh]  sm:h-[70vh]  border-slate-500/20 focus:border-slate-500/50 border-2 sm:p-[2vw] max-sm:p-10 bg-white shadow-xl rounded-[1.5vw]"
+          className="outline-none max-sm:rounded-2xl max-sm:text-xl sm:text-[1vw] sm:w-[60vw] max-sm:h-[30vh]  sm:h-[70vh]  border-slate-500/20 focus:border-slate-500/50 border-2 sm:p-[2vw] max-sm:p-10 bg-white shadow-xl rounded-[1.5vw]"
           value={clipboardText}
           onChange={handleChange}
           placeholder="Type something..."
         />
         <div className="flex w-full gap-2">
-          <Button title="Delete" onClick={() => setClipboardText("")} />
+          <Button
+            color="bg-red-500"
+            hoverColor="hover:bg-red-500/50"
+            title="Delete"
+            onClick={() => setClipboardText("")}
+          />
           <CopyToClipboard text={clipboardText} onCopy={handleCopy}>
             <Button title="Copy" />
           </CopyToClipboard>

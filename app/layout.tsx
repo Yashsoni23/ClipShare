@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="w-screen  h-screen relative flex flex-col justify-center items-center">
-          <div className="flex shadow-md relative w-full h-[5vw]">
+          <div className="flex shadow-md relative w-full max-sm:h-12 sm:h-[5vw]">
             <Image src={"/logo85.png"} alt="logo" fill objectFit="contain" />
           </div>
           <div className="bg-cyan-50  w-full h-[100%] flex justify-center items-center flex-col gap-[1vw]">
